@@ -1,7 +1,8 @@
-#include "includes/pessoa.hpp"
+#include "includes/principal.hpp"
 
 int main(void)
 {
-    Pessoa Doglas(11, 01, 2003, "Doglas");
-    Doglas.informaIdade();
+    Principal sistema;
+
+    return 0;
 }

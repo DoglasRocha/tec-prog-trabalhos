@@ -7,15 +7,12 @@ Pessoa::Pessoa(int diaNasc_, int mesNasc_, int anoNasc_, std::string nome_)
     diaNasc = diaNasc_;
     mesNasc = mesNasc_;
     anoNasc = anoNasc_;
-    idade = 0;
     nome = nome_;
-    calculaIdade(30, 8, 2022);
+    univAssociado = NULL;
+    idade = 0;
 }
 
-Pessoa::~Pessoa()
-{
-
-}
+Pessoa::~Pessoa() {}
 
 void Pessoa::setDataNasc(int diaNasc_, int mesNasc_, int anoNasc_)
 {
@@ -38,4 +35,29 @@ void Pessoa::calculaIdade(int diaAtual, int mesAtual, int anoAtual)
 void Pessoa::informaIdade()
 {
     std::cout << nome << " tem " << idade << " anos de idade.\n"; 
+}
+
+void Pessoa::setNome(std::string nome_)
+{
+    nome = nome_;
+}
+
+std::string Pessoa::getNome()
+{
+    return nome;
+}
+
+void Pessoa::setUniversidade(Universidade *univ)
+{
+    univAssociado = univ;
+}
+
+Universidade *Pessoa::getUniversidade()
+{
+    return univAssociado;
+}
+
+void Pessoa::ondeTrabalha()
+{
+    std::cout << nome << " estuda na " << univAssociado->getNome() << "\n"; 
 }
