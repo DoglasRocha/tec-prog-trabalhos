@@ -38,12 +38,10 @@ Departamento *Departamento::setUniversidade(Universidade *universidade)
 Departamento *Departamento::addDisciplina(Disciplina *disciplina)
 {
     if (primeiraDisciplina == NULL)
-        primeiraDisciplina = disciplina;
+        primeiraDisciplina = ultimaDisciplina = disciplina;
 
     else
         ultimaDisciplina->next = disciplina, ultimaDisciplina = disciplina;
-
-    disciplina->setDptoAssociado(this);
 
     return this;
 }

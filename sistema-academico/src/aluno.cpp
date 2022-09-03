@@ -20,3 +20,32 @@ Aluno *Aluno::setRA(int RA_)
     RA = RA_;
     return this;
 }
+
+Universidade *Aluno::getUnivAssociado()
+{
+    return univAssociado;
+}
+
+Aluno *Aluno::setUnivAssociado(Universidade *univ)
+{
+    univAssociado = univ;
+
+    return this;
+}
+
+Departamento *Aluno::getDptoAssociado()
+{
+    return dptoAssociado;
+}
+
+Aluno *Aluno::setDptoAssociado(Departamento *dpto)
+{
+    dptoAssociado = dpto;
+
+    return this;
+}
+
+void Aluno::ondeEstuda()
+{
+    std::cout << nome << " estuda na " << univAssociado->getNome() << " no departamento " << dptoAssociado->getNome() << " e tem o RA " << RA << "\n";
+}

@@ -44,6 +44,7 @@ Departamento *Disciplina::getDptoAssociado()
 Disciplina *Disciplina::setDptoAssociado(Departamento *departamento)
 {
     dptoAssociado = departamento;
-
+    dptoAssociado->addDisciplina(this);
+    
     return this;
 }
