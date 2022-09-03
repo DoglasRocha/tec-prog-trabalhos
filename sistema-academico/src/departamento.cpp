@@ -1,4 +1,5 @@
 #include "../includes/departamento.hpp"
+#include "../includes/universidade.hpp"
 #include <string>
 
 Departamento::Departamento(std::string nome_)
@@ -13,7 +14,19 @@ std::string Departamento::getNome()
     return nome;
 }
 
-void Departamento::setNome(std::string nome_)
+Departamento *Departamento::setNome(std::string nome_)
 {
     nome = nome_;
+    return this;
+}
+
+Universidade *Departamento::getUniversidade()
+{
+    return univ;
+}
+
+Departamento *Departamento::setUniversidade(Universidade *universidade)
+{
+    univ = universidade;
+    return this;
 }

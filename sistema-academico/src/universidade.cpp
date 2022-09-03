@@ -1,5 +1,6 @@
 #include "../includes/universidade.hpp"
 #include <iostream>
+#include <list>
 
 Universidade::Universidade(std::string nome_)
 {
@@ -8,9 +9,11 @@ Universidade::Universidade(std::string nome_)
 
 Universidade::~Universidade() {}
 
-void Universidade::setNome(std::string nome_)
+Universidade *Universidade::setNome(std::string nome_)
 {
     nome = nome_;
+
+    return this;
 }
 
 std::string Universidade::getNome()
@@ -18,12 +21,17 @@ std::string Universidade::getNome()
     return nome;
 }
 
-Departamento *Universidade::getDepartamento()
+Universidade *Universidade::setDepartamento(Departamento *departamento)
 {
-    return dpto;
+    dptos.push_back(departamento);
+
+    return this;
 }
 
-void Universidade::setDepartamento(Departamento *departamento)
+void Universidade::imprimeDepartamentos()
 {
-    dpto = departamento;
+    std::list<Departamento *>::iterator iterator;
+
+    for (iterator = dptos.begin(); iterator != dptos.end(); iterator++)
+        std::cout << (*iterator)->getNome() << "\n";
 }

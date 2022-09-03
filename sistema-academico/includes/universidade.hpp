@@ -1,19 +1,19 @@
 #pragma once
 #include <iostream>
+#include <list>
 #include "departamento.hpp"
 
 class Universidade
 {
     private:
         std::string nome;
-        Departamento *dpto;
+        std::list<Departamento *>dptos;
 
     public:
         Universidade(std::string nome_="");
         ~Universidade();
-        void setNome(std::string nome_="");
+        Universidade *setNome(std::string nome_="");
         std::string getNome();
-        Departamento *getDepartamento();
-        void setDepartamento(Departamento *departamento);
-    
+        Universidade *setDepartamento(Departamento *departamento);
+        void imprimeDepartamentos();
 };

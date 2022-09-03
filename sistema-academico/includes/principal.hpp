@@ -1,12 +1,16 @@
 #pragma once
 #include "universidade.hpp"
-#include "pessoa.hpp"
+#include "professor.hpp"
+#include "aluno.hpp"
 
 class Principal
 {
     private:
-        Pessoa Doglas;
+        Professor Simao;
+        Aluno Doglas;
         Universidade UTFPR;
+        Departamento DAINF;
+        Departamento DEDO;
         int diaAtual, mesAtual, anoAtual;
     public:
         Principal();
