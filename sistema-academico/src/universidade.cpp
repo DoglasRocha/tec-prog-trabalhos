@@ -24,6 +24,7 @@ std::string Universidade::getNome()
 Universidade *Universidade::setDepartamento(Departamento *departamento)
 {
     dptos.push_back(departamento);
+    departamento->setUniversidade(this);
 
     return this;
 }

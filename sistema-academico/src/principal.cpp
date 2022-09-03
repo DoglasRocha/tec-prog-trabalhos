@@ -17,7 +17,6 @@ Principal::Principal()
     std::cin >> diaAtual >> mesAtual >> anoAtual;
 
     Simao.setUniversidade(&UTFPR)->setDepartamento(&DAINF);
-    DAINF.setUniversidade(&UTFPR);
     UTFPR.setDepartamento(&DAINF)->setDepartamento(&DEDO);
     executar();
 }

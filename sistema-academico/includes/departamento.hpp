@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "disciplina.hpp"
 
 class Universidade;
 
@@ -8,6 +9,8 @@ class Departamento
     private:
         std::string nome;
         Universidade *univ;
+        Disciplina *primeiraDisciplina;
+        Disciplina *ultimaDisciplina;
 
     public:
         Departamento(std::string nome_="");
@@ -16,4 +19,6 @@ class Departamento
         Departamento *setNome(std::string nome_="");
         Universidade *getUniversidade();
         Departamento *setUniversidade(Universidade *universidade);
+        Departamento *addDisciplina(Disciplina *disciplina);
+        void imprimeDisciplinas();
 };
