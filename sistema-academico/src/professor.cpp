@@ -26,7 +26,7 @@ Universidade *Professor::getUniversidade()
 
 void Professor::ondeTrabalha()
 {
-    std::cout << nome << " trabalha na " << univAssociado->getNome() << " no departamento " << dptoAssociado->getNome() << "\n"; 
+    std::cout << nome << " trabalha na " << univAssociado->getNome() << " no " << dptoAssociado->getNome() << "\n"; 
 }
 
 Departamento *Professor::getDepartamento()

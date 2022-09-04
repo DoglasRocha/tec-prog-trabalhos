@@ -47,5 +47,5 @@ Aluno *Aluno::setDptoAssociado(Departamento *dpto)
 
 void Aluno::ondeEstuda()
 {
-    std::cout << nome << " estuda na " << univAssociado->getNome() << " no departamento " << dptoAssociado->getNome() << " e tem o RA " << RA << "\n";
+    std::cout << nome << " estuda na " << univAssociado->getNome() << " no " << dptoAssociado->getNome() << " e tem o RA " << RA << "\n";
 }

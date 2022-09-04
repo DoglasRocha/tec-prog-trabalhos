@@ -34,5 +34,5 @@ void Universidade::imprimeDepartamentos()
     std::list<Departamento *>::iterator iterator;
 
     for (iterator = dptos.begin(); iterator != dptos.end(); iterator++)
-        std::cout << (*iterator)->getNome() << "\n";
+        std::cout << "O " << (*iterator)->getNome() << " pertence a " << nome << "\n";
 }
