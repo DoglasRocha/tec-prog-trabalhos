@@ -11,7 +11,10 @@ Departamento::Departamento(std::string nome_)
     primeiraDisciplina = ultimaDisciplina = NULL;
 }
 
-Departamento::~Departamento() {}
+Departamento::~Departamento() 
+{
+    primeiraDisciplina = ultimaDisciplina = NULL;    
+}
 
 std::string Departamento::getNome()
 {
@@ -41,7 +44,9 @@ Departamento *Departamento::addDisciplina(Disciplina *disciplina)
         primeiraDisciplina = ultimaDisciplina = disciplina;
 
     else
-        ultimaDisciplina->next = disciplina, ultimaDisciplina = disciplina;
+        disciplina->prev = ultimaDisciplina,
+        ultimaDisciplina->next = disciplina, 
+        ultimaDisciplina = disciplina;
 
     return this;
 }
@@ -50,5 +55,5 @@ void Departamento::imprimeDisciplinas()
 {
     Disciplina *aux;
     for (aux = primeiraDisciplina; aux != NULL; aux = aux->next)
-        std::cout << aux->getNome() << "\n";
+        std::cout << "A disciplina " << aux->getNome() << " pertence ao departamento " << nome << "\n";
 }

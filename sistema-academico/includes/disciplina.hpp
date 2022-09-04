@@ -11,7 +11,7 @@ class Disciplina
         Departamento *dptoAssociado;
 
     public:
-        Disciplina *next;
+        Disciplina *next, *prev;
 
         Disciplina(std::string nome_="", std::string areaConhecimento_="");
         ~Disciplina();

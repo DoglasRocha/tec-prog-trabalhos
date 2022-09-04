@@ -7,7 +7,7 @@ Disciplina::Disciplina(std::string nome_, std::string areaConhecimento_)
     nome = nome_;
     areaConhecimento = areaConhecimento_;
     dptoAssociado = NULL;
-    next = NULL;
+    next = prev = NULL;
 }
 
 Disciplina::~Disciplina() {}
