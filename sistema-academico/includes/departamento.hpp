@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-#include "disciplina.hpp"
 
+class Disciplina;
 class Universidade;
 
 class Departamento

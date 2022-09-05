@@ -1,7 +1,8 @@
 #pragma once
 #include <iostream>
 #include <list>
-#include "departamento.hpp"
+
+class Departamento;
 
 class Universidade
 {

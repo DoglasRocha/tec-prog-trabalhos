@@ -1,8 +1,9 @@
 #pragma once
 #include "pessoa.hpp"
-#include "universidade.hpp"
-#include "departamento.hpp"
 #include <string>
+
+class Universidade;
+class Departamento;
 
 class Aluno : public Pessoa
 {
@@ -12,6 +13,9 @@ class Aluno : public Pessoa
         Departamento *dptoAssociado;
 
     public:
+        Aluno *next;
+        Aluno *prev;
+        
         Aluno(int diaNasc_=0, int mesNasc_=0, int anoNasc_=0, std::string nome="", int RA_=0);
         ~Aluno();
         int getRA();

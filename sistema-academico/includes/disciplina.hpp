@@ -2,6 +2,7 @@
 #include <string>
 
 class Departamento;
+class Aluno;
 
 class Disciplina
 {
@@ -9,6 +10,9 @@ class Disciplina
         std::string nome;
         std::string areaConhecimento;
         Departamento *dptoAssociado;
+        Aluno *primeiroAluno;
+        Aluno *ultimoAluno;
+        int numeroMaxAlunos, countAlunos;
 
     public:
         Disciplina *next, *prev;
@@ -22,4 +26,6 @@ class Disciplina
         Disciplina *setAreaConhecimento(std::string areaConhecimento_="");
         Departamento *getDptoAssociado();
         Disciplina *setDptoAssociado(Departamento *departamento);
+        void imprimeAlunos();
+        Disciplina *addAluno(Aluno *novoAluno);
 };

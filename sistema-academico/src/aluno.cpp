@@ -1,14 +1,23 @@
 #include "../includes/aluno.hpp"
 #include "../includes/pessoa.hpp"
+#include "../includes/universidade.hpp"
+#include "../includes/departamento.hpp"
 #include <string>
 
 Aluno::Aluno(int diaNasc_, int mesNasc_, int anoNasc_, std::string nome_, int RA_)
 : Pessoa(diaNasc_, mesNasc_, anoNasc_, nome_)
 {
     RA = RA_;
+    univAssociado = NULL;
+    dptoAssociado = NULL;
+    next = prev = NULL;
 }
 
-Aluno::~Aluno() {}
+Aluno::~Aluno() 
+{
+    univAssociado = NULL;
+    dptoAssociado = NULL;
+}
 
 int Aluno::getRA()
 {

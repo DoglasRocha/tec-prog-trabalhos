@@ -30,6 +30,15 @@ void Principal::inicializaPessoas()
 
     Doglas.setDataNasc(11, 1, 2003)->setNome("Doglas");
     Doglas.setRA(2450054)->setUnivAssociado(&UTFPR)->setDptoAssociado(&DAINF);
+
+    abrao.setDataNasc(12, 5, 2003)->setNome("Abrao Carneiro");
+    abrao.setRA(2450055)->setUnivAssociado(&UTFPR)->setDptoAssociado(&DAINF);
+
+    altair.setDataNasc(13, 1, 2003)->setNome("Altair dos Santos Correia");
+    altair.setRA(2450056)->setUnivAssociado(&UTFPR)->setDptoAssociado(&DAINF);
+
+    zulmir.setDataNasc(13, 1, 2003)->setNome("Zulmir Cunha da Silva");
+    zulmir.setRA(2450056)->setUnivAssociado(&UTFPR)->setDptoAssociado(&DAINF);
 }
 
 void Principal::inicializaUniversidades()
@@ -51,6 +60,8 @@ void Principal::inicializaDisciplinas()
 
     Prolegomenos.setDptoAssociado(&DAINF);
     TecProg.setDptoAssociado(&DAINF);
+
+    Prolegomenos.addAluno(&altair)->addAluno(&abrao)->addAluno(&zulmir)->addAluno(&Doglas);
 }
 
 
@@ -63,4 +74,5 @@ void Principal::executar()
     Doglas.ondeEstuda();
     UTFPR.imprimeDepartamentos();
     DAINF.imprimeDisciplinas();
+    Prolegomenos.imprimeAlunos();
 }

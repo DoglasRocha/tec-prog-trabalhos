@@ -1,8 +1,9 @@
 #pragma once
 #include "pessoa.hpp"
-#include "universidade.hpp"
-#include "departamento.hpp"
 #include <iostream>
+
+class Universidade;
+class Departamento;
 
 class Professor : public Pessoa
 {

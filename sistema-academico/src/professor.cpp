@@ -1,4 +1,6 @@
 #include "../includes/professor.hpp"
+#include "../includes/universidade.hpp"
+#include "../includes/departamento.hpp"
 #include <string>
 
 Professor::Professor(int diaNasc_, int mesNasc_, int anoNasc_, std::string nome_)
