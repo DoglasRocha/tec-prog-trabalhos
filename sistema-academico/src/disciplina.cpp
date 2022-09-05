@@ -119,6 +119,8 @@ Disciplina *Disciplina::removerAluno(Aluno *aluno)
         {
             if (aux->prev) aux->prev->next = aux->next;
             if (aux->next) aux->next->prev = aux->prev;
+            if (aux == primeiroAluno) primeiroAluno = aux->next;
+            if (aux == ultimoAluno) ultimoAluno = aux->prev;
             return this;
         }
     }
