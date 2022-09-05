@@ -110,3 +110,19 @@ Disciplina *Disciplina::addAluno(Aluno *novoAluno)
     countAlunos++;
     return this;
 }
+
+Disciplina *Disciplina::removerAluno(Aluno *aluno)
+{
+    for (Aluno *aux = primeiroAluno; aux != NULL; aux = aux->next)
+    {
+        if (aluno == aux)
+        {
+            if (aux->prev) aux->prev->next = aux->next;
+            if (aux->next) aux->next->prev = aux->prev;
+            return this;
+        }
+    }
+
+    std::cout << "Aluno não encontrado\n";
+    return this;
+} 

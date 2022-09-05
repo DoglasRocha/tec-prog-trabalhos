@@ -28,4 +28,5 @@ class Disciplina
         Disciplina *setDptoAssociado(Departamento *departamento);
         void imprimeAlunos();
         Disciplina *addAluno(Aluno *novoAluno);
+        Disciplina *removerAluno(Aluno *aluno);
 };
