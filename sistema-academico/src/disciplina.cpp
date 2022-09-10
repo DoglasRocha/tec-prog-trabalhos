@@ -1,22 +1,22 @@
 #include "../includes/disciplina.hpp"
 #include "../includes/departamento.hpp"
 #include "../includes/aluno.hpp"
+#include "../linked-list/includes/linked-list.hpp"
+#include "../linked-list/src/linked-list.cpp"
 #include <string>
 
 Disciplina::Disciplina(std::string nome_, std::string areaConhecimento_)
 {
     nome = nome_;
     areaConhecimento = areaConhecimento_;
-    dptoAssociado = NULL;
-    next = prev = NULL;
-    primeiroAluno = ultimoAluno = NULL;
+    dptoAssociado = nullptr;
+    next = prev = nullptr;
     numeroMaxAlunos = 45;
-    countAlunos = 0;
 }
 
 Disciplina::~Disciplina() 
 {
-    primeiroAluno = ultimoAluno = NULL;
+
 }
 
 std::string Disciplina::getNome()
@@ -58,69 +58,60 @@ Disciplina *Disciplina::setDptoAssociado(Departamento *departamento)
 
 void Disciplina::imprimeAlunos()
 {
-    for (Aluno *aux = primeiroAluno; aux != NULL; aux = aux->next)
-        std::cout << "O aluno " << aux->getNome() << " está matriculado na disciplina " << nome << "\n";
+    for (int i = 0, l = listaAlunos.getLength(); i < l; i++)
+    {
+        std::cout << "O aluno " << listaAlunos[i]->getNome() << " está matriculado na disciplina " << nome << "\n";
+    }
 
 }
 
 Disciplina *Disciplina::addAluno(Aluno *novoAluno)
 {
-    int tamComparacao, compNomes;
+    int tamComparacao, compNomes, qtdAlunos = listaAlunos.getLength();
 
-    if (countAlunos == numeroMaxAlunos)
+    if (qtdAlunos == numeroMaxAlunos)
     {
         std::cout << "Disciplina lotada\n";
         return this;
     }
 
-    if (countAlunos == 0)
-        primeiroAluno = ultimoAluno = novoAluno;
+    if (qtdAlunos == 0)
+        listaAlunos.append(novoAluno);
     
     else
     {
-        for (Aluno *aux = primeiroAluno; aux != NULL; aux = aux->next)
+        for (int i = 0, qtdAlunos = listaAlunos.getLength(); i < qtdAlunos; i++)
         {
             tamComparacao = 1;
-            compNomes = aux->getNome().compare(0, tamComparacao, 
+            compNomes = listaAlunos[i]->getNome().compare(0, tamComparacao, 
                 novoAluno->getNome(), 0, tamComparacao);
 
             while (compNomes == 0)
                 tamComparacao++,
-                compNomes = aux->getNome().compare(0, tamComparacao, 
+                compNomes = listaAlunos[i]->getNome().compare(0, tamComparacao, 
                     novoAluno->getNome(), 0, tamComparacao);
 
             if (compNomes > 0)
             {
-                if (aux->prev) aux->prev->next = novoAluno;
-                novoAluno->prev = aux->prev;
-                aux->prev = novoAluno;
-                novoAluno->next = aux;
-                if (aux == primeiroAluno) primeiroAluno = novoAluno;
+                listaAlunos.insert(novoAluno, i);
 
-                countAlunos++;
                 return this;
             }
         }
 
-        ultimoAluno->next = novoAluno;
-        novoAluno->prev = ultimoAluno;
-        ultimoAluno = novoAluno;
+        listaAlunos.append(novoAluno);
     }
 
-    countAlunos++;
     return this;
 }
 
 Disciplina *Disciplina::removerAluno(Aluno *aluno)
 {
-    for (Aluno *aux = primeiroAluno; aux != NULL; aux = aux->next)
+    for (int i = 0, l = listaAlunos.getLength(); i < l; i++)
     {
-        if (aluno == aux)
+        if (aluno == listaAlunos[i])
         {
-            if (aux->prev) aux->prev->next = aux->next;
-            if (aux->next) aux->next->prev = aux->prev;
-            if (aux == primeiroAluno) primeiroAluno = aux->next;
-            if (aux == ultimoAluno) ultimoAluno = aux->prev;
+            listaAlunos.remove(i);
             return this;
         }
     }

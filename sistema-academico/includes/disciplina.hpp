@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "../linked-list/includes/linked-list.hpp"
 
 class Departamento;
 class Aluno;
@@ -10,11 +11,10 @@ class Disciplina
         std::string nome;
         std::string areaConhecimento;
         Departamento *dptoAssociado;
-        Aluno *primeiroAluno;
-        Aluno *ultimoAluno;
-        int numeroMaxAlunos, countAlunos;
+        int numeroMaxAlunos;
 
     public:
+        LinkedList<Aluno *> listaAlunos;
         Disciplina *next, *prev;
 
         Disciplina(std::string nome_="", std::string areaConhecimento_="");

@@ -61,7 +61,10 @@ void Principal::inicializaDisciplinas()
     Prolegomenos.setDptoAssociado(&DAINF);
     TecProg.setDptoAssociado(&DAINF);
 
-    Prolegomenos.addAluno(&altair)->addAluno(&abrao)->addAluno(&zulmir)->addAluno(&Doglas);
+    Prolegomenos.addAluno(&altair);
+    Prolegomenos.addAluno(&abrao);
+    Prolegomenos.addAluno(&zulmir);
+    Prolegomenos.addAluno(&Doglas);
 }
 
 

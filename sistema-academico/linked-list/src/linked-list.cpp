@@ -41,6 +41,8 @@ LinkedList<T> *LinkedList<T>::insert(T data, int index)
         break;
     }
     length++;
+    if (index <= auxPointerIndex)
+        auxPointerIndex++;
 
     return this;
 }
@@ -49,6 +51,8 @@ template <class T>
 LinkedList<T> *LinkedList<T>::append(T data)
 {
     insert(data, -1);
+
+    return this;
 }
 
 template <class T> 
@@ -95,8 +99,7 @@ int LinkedList<T>::getLength()
 template <class T> 
 void LinkedList<T>::insertInEmptyList(Node<T> *node)
 {
-    head = tail = auxPointer = node,
-    node->prev = node->next = nullptr,
+    head = tail = auxPointer = node;
 }
 
 template <class T> 
@@ -110,7 +113,6 @@ void LinkedList<T>::insertAtListHead(Node<T> *node)
         node->next = head;
         head->prev = node;
         head = node; 
-        node->prev = NULL;
     }
 }
 
@@ -124,7 +126,6 @@ void LinkedList<T>::insertAtListTail(Node<T> *node)
     {
         tail->next = node;
         node->prev = tail;
-        node->next = nullptr;
         tail = node;   
     }
 }
@@ -135,10 +136,10 @@ void LinkedList<T>::insertAtIndex(Node<T> *node, int index)
     Node<T> *aux;
 
     if (length == 0)
-        insertInEmptyList(node),
+        insertInEmptyList(node);
 
     else if (length <= index)
-        insertAtListTail(node),
+        insertAtListTail(node);
 
     else
     {
@@ -154,12 +155,15 @@ void LinkedList<T>::insertAtIndex(Node<T> *node, int index)
 template <class T> 
 Node<T> *LinkedList<T>::getNodeAt(int index)
 {
-    int indexDelta = index - auxPointerIndex;
-    int diffToBorder;
+    int indexDelta, diffToBorder;
+    indexDelta = index - auxPointerIndex;
+    if (indexDelta == 0) return auxPointer;
 
-    if (indexDelta >= 0)
+    if (indexDelta > 0)
     {
         diffToBorder = length - index;
+        // if the index diff is less or equal than the differente from the index to the border, then
+        // reach the index starting from the current index
         if (indexDelta <= diffToBorder)
         {
             while (auxPointerIndex != index)
@@ -169,6 +173,7 @@ Node<T> *LinkedList<T>::getNodeAt(int index)
             return auxPointer;
         }
 
+        // otherwise, move auxPointer to the end of the list
         for (
             auxPointerIndex = length -1, auxPointer = tail;
             auxPointerIndex != index;
@@ -178,22 +183,24 @@ Node<T> *LinkedList<T>::getNodeAt(int index)
         return auxPointer;
     }  
     
+    // if the desired index is closer to the border than the path between the current node and the desired node,
+    // then reach the desired index from the list head
     if (-index > indexDelta)
     {
         for (
             auxPointerIndex = 0, auxPointer = head;
             auxPointerIndex != index;
             auxPointer = auxPointer->next, auxPointerIndex++
-        )
+        );
 
         return auxPointer;
     }
 
+    // otherwise, reach the desired index from the current position
     while (auxPointerIndex != index)
         auxPointer = auxPointer->prev,
-        auxPointerIndex--,
+        auxPointerIndex--;
         
-
     return auxPointer;
 }
 

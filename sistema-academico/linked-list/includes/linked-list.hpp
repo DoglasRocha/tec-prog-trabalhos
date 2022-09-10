@@ -26,5 +26,3 @@ class LinkedList
         Node<T> *removeListTail();
         Node<T> *removeAtIndex(int index);
 };
-
-#include "../src/linked-list.cpp"
