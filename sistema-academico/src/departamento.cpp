@@ -1,19 +1,19 @@
 #include "../includes/departamento.hpp"
 #include "../includes/universidade.hpp"
 #include "../includes/disciplina.hpp"
+#include "../linked-list/src/linked-list.cpp"
 #include <string>
 #include <iostream>
 
 Departamento::Departamento(std::string nome_)
 {
     nome = nome_;
-    univ = NULL;
-    primeiraDisciplina = ultimaDisciplina = NULL;
+    univ = nullptr;
 }
 
 Departamento::~Departamento() 
 {
-    primeiraDisciplina = ultimaDisciplina = NULL;    
+      
 }
 
 std::string Departamento::getNome()
@@ -40,20 +40,13 @@ Departamento *Departamento::setUniversidade(Universidade *universidade)
 
 Departamento *Departamento::addDisciplina(Disciplina *disciplina)
 {
-    if (primeiraDisciplina == NULL)
-        primeiraDisciplina = ultimaDisciplina = disciplina;
-
-    else
-        disciplina->prev = ultimaDisciplina,
-        ultimaDisciplina->next = disciplina, 
-        ultimaDisciplina = disciplina;
+    ListaDisciplinas.append(disciplina);
 
     return this;
 }
 
 void Departamento::imprimeDisciplinas()
 {
-    Disciplina *aux;
-    for (aux = primeiraDisciplina; aux != NULL; aux = aux->next)
-        std::cout << "A disciplina " << aux->getNome() << " pertence ao departamento " << nome << "\n";
+    for (int i = 0, l = ListaDisciplinas.getLength(); i < l; i++)
+        std::cout << "A disciplina " << ListaDisciplinas[i]->getNome() << " pertence ao departamento " << nome << "\n";
 }

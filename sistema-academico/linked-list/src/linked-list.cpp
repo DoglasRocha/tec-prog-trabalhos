@@ -40,7 +40,9 @@ LinkedList<T> *LinkedList<T>::insert(T data, int index)
         insertAtIndex(node, index);
         break;
     }
+
     length++;
+
     if (index <= auxPointerIndex)
         auxPointerIndex++;
 
@@ -155,52 +157,46 @@ void LinkedList<T>::insertAtIndex(Node<T> *node, int index)
 template <class T> 
 Node<T> *LinkedList<T>::getNodeAt(int index)
 {
-    int indexDelta, diffToBorder;
-    indexDelta = index - auxPointerIndex;
-    if (indexDelta == 0) return auxPointer;
+    int indexDelta = index - auxPointerIndex,
+        diffToHead = index,
+        diffToTail = length - 1 - index;
+
+    if (-diffToHead > indexDelta)
+        auxPointer = head,
+        auxPointerIndex = 0,
+        indexDelta = index - auxPointerIndex;
+        
+
+    if (diffToTail < indexDelta)
+        auxPointer = tail,
+        auxPointerIndex = length - 1,
+        indexDelta = index - auxPointerIndex;
 
     if (indexDelta > 0)
     {
-        diffToBorder = length - index;
-        // if the index diff is less or equal than the differente from the index to the border, then
-        // reach the index starting from the current index
-        if (indexDelta <= diffToBorder)
+        while (index != auxPointerIndex)
         {
-            while (auxPointerIndex != index)
-                auxPointer = auxPointer->next,
-                auxPointerIndex++;
+            auxPointerIndex++,
+            auxPointer = auxPointer->next;
 
-            return auxPointer;
+            if (auxPointer == nullptr)
+                auxPointerIndex = 0,
+                auxPointer = head;
         }
-
-        // otherwise, move auxPointer to the end of the list
-        for (
-            auxPointerIndex = length -1, auxPointer = tail;
-            auxPointerIndex != index;
-            auxPointer = auxPointer->prev, auxPointerIndex--
-        );
-
-        return auxPointer;
-    }  
-    
-    // if the desired index is closer to the border than the path between the current node and the desired node,
-    // then reach the desired index from the list head
-    if (-index > indexDelta)
+    }
+    else
     {
-        for (
-            auxPointerIndex = 0, auxPointer = head;
-            auxPointerIndex != index;
-            auxPointer = auxPointer->next, auxPointerIndex++
-        );
-
-        return auxPointer;
+        while (index != auxPointerIndex)
+        {
+            auxPointerIndex--,
+            auxPointer = auxPointer->prev;
+        
+            if (auxPointer == nullptr)
+                auxPointerIndex = length -1,
+                auxPointer = tail;
+        }
     }
 
-    // otherwise, reach the desired index from the current position
-    while (auxPointerIndex != index)
-        auxPointer = auxPointer->prev,
-        auxPointerIndex--;
-        
     return auxPointer;
 }
 
@@ -214,7 +210,14 @@ Node<T> *LinkedList<T>::removeListHead()
     head = nodeToRemove->next;
 
     if (head) head->prev = nullptr;
-    
+
+    if (nodeToRemove == auxPointer)
+        auxPointer = head,
+        auxPointerIndex = 0;
+
+    else
+        auxPointerIndex--;
+
     return nodeToRemove;
 }
 
@@ -229,8 +232,9 @@ Node<T> *LinkedList<T>::removeListTail()
     tail = nodeToRemove->prev;
     if (tail) 
         tail->next = nullptr;
-    else 
-        head = nullptr;
+    
+    auxPointer = tail;
+    auxPointerIndex--;
     
     return nodeToRemove;
 }
@@ -250,6 +254,8 @@ Node<T> *LinkedList<T>::removeAtIndex(int index)
 
     nodeToRemove->prev->next = nodeToRemove->next;
     nodeToRemove->next->prev = nodeToRemove->prev;
+
+    auxPointer = nodeToRemove->next;
 
     return nodeToRemove;
 }
