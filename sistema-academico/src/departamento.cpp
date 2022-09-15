@@ -2,6 +2,7 @@
 #include "../includes/universidade.hpp"
 #include "../includes/disciplina.hpp"
 #include "../linked-list/includes/linked-list.hpp"
+#include "../linked-list/src/linked-list.cpp"
 #include <string>
 #include <iostream>
 

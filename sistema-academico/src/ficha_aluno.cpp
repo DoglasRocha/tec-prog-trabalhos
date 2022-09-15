@@ -4,9 +4,9 @@
 
 FichaAluno::FichaAluno(Aluno *ptrAluno_)
 {
-  ptrAluno = ptrAluno_;
-  notas[0] = 0, notas[1]= 0;
-  faltas = 0;
+	ptrAluno = ptrAluno_;
+	notas[0] = 0, notas[1]= 0;
+	faltas = 0;
 }
 
 FichaAluno::~FichaAluno()
@@ -16,45 +16,48 @@ FichaAluno::~FichaAluno()
 
 Aluno *FichaAluno::getAluno()
 {
-  return ptrAluno;
+  	return ptrAluno;
 }
 
 FichaAluno *FichaAluno::setAluno(Aluno *ptrAluno_)
 {
-  ptrAluno = ptrAluno_;
+  	ptrAluno = ptrAluno_;
+
+  	return this;
 }
 
 void FichaAluno::imprimeNotas()
 {
-  for (int i = 1; i <= 2; i++)
-    std::cout << "Nota da " << i << "ª parcial do aluno "
-              << ptrAluno->getNome() << ": " << notas[0]
-              << std::endl;
+  	for (int i = 1; i <= 2; i++)
+    	std::cout << "Nota da " << i << "ª parcial do aluno "
+            	  << ptrAluno->getNome() << ": " << notas[0]
+              	  << std::endl;
 
 }
 
 FichaAluno *FichaAluno::setNota(float nota, int numParcial)
 {
-  if (numParcial != 1 && numParcial != 2)
-    std::cout << "Número da parcial inválida." << std::endl;
+  	if (numParcial != 1 && numParcial != 2)
+    	std::cout << "Número da parcial inválida." << std::endl;
 
-  else
-    notas[numParcial] = nota;
+  	else
+    	notas[numParcial] = nota;
 
-  return this;
+  	return this;
 }
 
 int FichaAluno::getFaltas()
 {
-  return faltas;
+  	return faltas;
 }
 
-Aluno *FichaAluno::addFaltas(int faltas_)
+FichaAluno *FichaAluno::addFaltas(int faltas_)
 {
-  if (faltas < 1)
-    std::cout << "Faltas não adicionadas" << std::endl;
+  	if (faltas < 1)
+    	std::cout << "Faltas não adicionadas" << std::endl;
 
-  else
-    faltas += faltas_;
+  	else
+    	faltas += faltas_;
 
+	return this;
 }

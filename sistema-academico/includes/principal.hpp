@@ -8,14 +8,15 @@
 class Principal
 {
     private:
-        Professor Simao;
-        Aluno Doglas, abrao, altair, zulmir;
-        Universidade UTFPR;
-        Departamento DAINF;
-        Departamento DEDO;
-        Disciplina Prolegomenos;
-        Disciplina TecProg;
-        int diaAtual, mesAtual, anoAtual;
+        Professor *Simao;
+        Aluno *Doglas, *abrao, *altair, *zulmir;
+        Universidade *UTFPR;
+        Departamento *DAINF;
+        Departamento *DEDO;
+        Disciplina *Prolegomenos;
+        Disciplina *TecProg;
+        
+        // int diaAtual, mesAtual, anoAtual;
         
     public:
         Principal();
@@ -25,5 +26,13 @@ class Principal
         void inicializaUniversidades();
         void inicializaDepartamentos();
         void inicializaDisciplinas();
+        void bind();
+        void bindPessoas();
+        void bindUniversidades();
+        void bindDepartamentos();
+        void bindDisciplinas();
         void executar();
+        void menu();
+        void menuCadastro();
+        void menuExecucao();
 };
