@@ -13,9 +13,6 @@ class Aluno : public Pessoa
         Departamento *dptoAssociado;
 
     public:
-        Aluno *next;
-        Aluno *prev;
-        
         Aluno(int diaNasc_=0, int mesNasc_=0, int anoNasc_=0, std::string nome="", int RA_=0);
         ~Aluno();
         int getRA();

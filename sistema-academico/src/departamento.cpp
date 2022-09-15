@@ -1,13 +1,13 @@
 #include "../includes/departamento.hpp"
 #include "../includes/universidade.hpp"
 #include "../includes/disciplina.hpp"
-#include "../linked-list/src/linked-list.cpp"
+#include "../linked-list/includes/linked-list.hpp"
 #include <string>
 #include <iostream>
 
 Departamento::Departamento(std::string nome_)
 {
-    nome = nome_;
+    nome = nome_; 
     univ = nullptr;
 }
 

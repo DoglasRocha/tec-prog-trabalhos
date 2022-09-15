@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <list>
+#include "../linked-list/includes/linked-list.hpp"
 
 class Departamento;
 
@@ -8,7 +9,7 @@ class Universidade
 {
     private:
         std::string nome;
-        std::list<Departamento *>dptos;
+        LinkedList<Departamento *> dptos;
 
     public:
         Universidade(std::string nome_="");

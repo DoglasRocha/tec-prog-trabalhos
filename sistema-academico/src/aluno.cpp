@@ -8,15 +8,14 @@ Aluno::Aluno(int diaNasc_, int mesNasc_, int anoNasc_, std::string nome_, int RA
 : Pessoa(diaNasc_, mesNasc_, anoNasc_, nome_)
 {
     RA = RA_;
-    univAssociado = NULL;
-    dptoAssociado = NULL;
-    next = prev = NULL;
+    univAssociado = nullptr;
+    dptoAssociado = nullptr;
 }
 
 Aluno::~Aluno() 
 {
-    univAssociado = NULL;
-    dptoAssociado = NULL;
+    univAssociado = nullptr;
+    dptoAssociado = nullptr;
 }
 
 int Aluno::getRA()

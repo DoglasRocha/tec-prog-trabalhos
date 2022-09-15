@@ -3,6 +3,7 @@
 #include "../includes/aluno.hpp"
 #include "../linked-list/includes/linked-list.hpp"
 #include "../linked-list/src/linked-list.cpp"
+#include "../includes/ficha_aluno.hpp"
 #include <string>
 
 Disciplina::Disciplina(std::string nome_, std::string areaConhecimento_)
@@ -60,7 +61,7 @@ void Disciplina::imprimeAlunos()
 {
     for (int i = 0, l = listaAlunos.getLength(); i < l; i++)
     {
-        std::cout << "O aluno " << listaAlunos[i]->getNome() << " está matriculado na disciplina " << nome << "\n";
+        std::cout << "O aluno " << listaAlunos[i]->getAluno()->getNome() << " está matriculado na disciplina " << nome << "\n";
     }
 
 }
@@ -68,6 +69,7 @@ void Disciplina::imprimeAlunos()
 Disciplina *Disciplina::addAluno(Aluno *novoAluno)
 {
     int tamComparacao, compNomes, qtdAlunos = listaAlunos.getLength();
+    FichaAluno *novaFichaAluno = new FichaAluno(novoAluno);
 
     if (qtdAlunos == numeroMaxAlunos)
     {
@@ -76,30 +78,30 @@ Disciplina *Disciplina::addAluno(Aluno *novoAluno)
     }
 
     if (qtdAlunos == 0)
-        listaAlunos.append(novoAluno);
+        listaAlunos.append(novaFichaAluno);
     
     else
     {
         for (int i = 0, qtdAlunos = listaAlunos.getLength(); i < qtdAlunos; i++)
         {
             tamComparacao = 1;
-            compNomes = listaAlunos[i]->getNome().compare(0, tamComparacao, 
+            compNomes = listaAlunos[i]->getAluno()->getNome().compare(0, tamComparacao, 
                 novoAluno->getNome(), 0, tamComparacao);
 
             while (compNomes == 0)
                 tamComparacao++,
-                compNomes = listaAlunos[i]->getNome().compare(0, tamComparacao, 
+                compNomes = listaAlunos[i]->getAluno()->getNome().compare(0, tamComparacao, 
                     novoAluno->getNome(), 0, tamComparacao);
 
             if (compNomes > 0)
             {
-                listaAlunos.insert(novoAluno, i);
+                listaAlunos.insert(novaFichaAluno, i);
 
                 return this;
             }
         }
 
-        listaAlunos.append(novoAluno);
+        listaAlunos.append(novaFichaAluno);
     }
 
     return this;
@@ -109,7 +111,7 @@ Disciplina *Disciplina::removerAluno(Aluno *aluno)
 {
     for (int i = 0, l = listaAlunos.getLength(); i < l; i++)
     {
-        if (aluno == listaAlunos[i])
+        if (aluno == listaAlunos[i]->getAluno())
         {
             listaAlunos.remove(i);
             return this;

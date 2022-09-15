@@ -1,6 +1,8 @@
+#pragma once
+
 class Aluno;
 
-class FichaAluno 
+class FichaAluno
 {
     private:
         Aluno *ptrAluno;
@@ -15,5 +17,5 @@ class FichaAluno
         void imprimeNotas();
         FichaAluno *setNota(float nota, int numParcial);
         int getFaltas();
-        Aluno *addFaltas(int faltas);
+        Aluno *addFaltas(int faltas_);
 };
