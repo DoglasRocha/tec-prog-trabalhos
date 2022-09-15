@@ -13,7 +13,18 @@ Principal::Principal()
     executar();
 }
 
-Principal::~Principal() {}
+Principal::~Principal() {
+    delete Simao;
+    delete Doglas;
+    delete abrao;
+    delete altair;
+    delete zulmir;
+    delete UTFPR;
+    delete DAINF;
+    delete DEDO;
+    delete Prolegomenos;
+    delete TecProg;
+}
 
 void Principal::inicializa()
 {
