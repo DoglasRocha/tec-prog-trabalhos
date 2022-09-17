@@ -1,3 +1,0 @@
-/home/doglasrocha/CLionProjects/tec-prog-trabalhos/cmake-build-debug/CMakeFiles/tec_prog_trabalhos.dir
-/home/doglasrocha/CLionProjects/tec-prog-trabalhos/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/doglasrocha/CLionProjects/tec-prog-trabalhos/cmake-build-debug/CMakeFiles/rebuild_cache.dir
