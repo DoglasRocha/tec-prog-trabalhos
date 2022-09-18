@@ -4,6 +4,8 @@
 #include "aluno.hpp"
 #include "disciplina.hpp"
 #include "departamento.hpp"
+#include "../linked-list/includes/linked-list.hpp"
+#include "../linked-list/src/linked-list.cpp"
 
 class Principal
 {
@@ -15,7 +17,12 @@ class Principal
         Departamento *DEDO;
         Disciplina *Prolegomenos;
         Disciplina *TecProg;
-        
+        LinkedList<Professor *> ListaProfessores;
+        LinkedList<Aluno *> ListaAlunos;
+        LinkedList<Universidade *> ListaUniversidades;
+        LinkedList<Departamento *> ListaDepartamentos;
+        LinkedList<Disciplina *> ListaDisciplinas;
+
         // int diaAtual, mesAtual, anoAtual;
         
     public:
@@ -35,4 +42,9 @@ class Principal
         void menu();
         void menuCadastro();
         void menuExecucao();
+        void cadastraAluno();
+        void cadastraProfessor();
+        void cadastraDisciplina();
+        void cadastraDepartamento();
+        void cadastraUniversidade();
 };

@@ -17,5 +17,6 @@ class Universidade
         Universidade *setNome(std::string nome_="");
         std::string getNome();
         Universidade *setDepartamento(Departamento *departamento);
+        LinkedList<Departamento *> getDptos();
         void imprimeDepartamentos();
 };

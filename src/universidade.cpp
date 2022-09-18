@@ -37,3 +37,7 @@ void Universidade::imprimeDepartamentos()
         std::cout << "O " << dptos[i]->getNome() << " pertence a "
                   << nome << std::endl;
 }
+
+LinkedList<Departamento *> Universidade::getDptos() {
+    return dptos;
+}
