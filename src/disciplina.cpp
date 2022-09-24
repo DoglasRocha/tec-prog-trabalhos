@@ -2,7 +2,6 @@
 #include "../includes/departamento.hpp"
 #include "../includes/aluno.hpp"
 #include "../linked-list/includes/linked-list.hpp"
-#include "../linked-list/src/linked-list.cpp"
 #include "../includes/ficha_aluno.hpp"
 #include <string>
 

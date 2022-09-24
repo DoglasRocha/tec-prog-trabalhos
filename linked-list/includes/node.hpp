@@ -10,3 +10,16 @@ class Node
         Node(T data_=0);
         ~Node();
 };
+
+template <class T>
+Node<T>::Node(T data_)
+{
+    data = data_;
+    next = prev = 0;
+}
+
+template <class T>
+Node<T>::~Node()
+{
+
+}

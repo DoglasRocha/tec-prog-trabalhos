@@ -5,7 +5,6 @@
 #include "disciplina.hpp"
 #include "departamento.hpp"
 #include "../linked-list/includes/linked-list.hpp"
-#include "../linked-list/src/linked-list.cpp"
 
 class Principal
 {

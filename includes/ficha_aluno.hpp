@@ -15,6 +15,7 @@ class FichaAluno
         Aluno *getAluno();
         FichaAluno *setAluno(Aluno *ptrAluno_=0);
         void imprimeNotas();
+        float getNota(int numParcial);
         FichaAluno *setNota(float nota, int numParcial);
         int getFaltas();
         FichaAluno *addFaltas(int faltas_);

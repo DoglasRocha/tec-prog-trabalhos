@@ -46,6 +46,14 @@ FichaAluno *FichaAluno::setNota(float nota, int numParcial)
   	return this;
 }
 
+float FichaAluno::getNota(int numParcial)
+{
+    if (numParcial != 0 && numParcial != 1)
+        return 0;
+
+    return notas[numParcial];
+}
+
 int FichaAluno::getFaltas()
 {
   	return faltas;

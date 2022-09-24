@@ -212,8 +212,8 @@ void Principal::menuExecucao()
 
 void Principal::cadastraAluno()
 {
-    std::string nome, departamento, universidade;
-    int dia, mes, ano, RA, qtdDisciplinas, flag = 0;
+    std::string nome;
+    int dia, mes, ano, RA;
     Aluno *novoAluno;
 
     cout << "Digite o nome do Aluno: ";
@@ -228,53 +228,78 @@ void Principal::cadastraAluno()
     novoAluno = new Aluno(dia, mes, ano, nome, RA);
     ListaAlunos.append(novoAluno);
 
-    do
-    {
-        cout << "Em qual universidade esse aluno está matriculado? ";
-        cin >> universidade;
-
-        for (int i = 0, l = ListaUniversidades.getLength(); i < l; ++i)
-            if (ListaUniversidades[i]->getNome() == universidade)
-            {
-                flag = 1;
-                novoAluno->setUnivAssociado(ListaUniversidades[i]);
-                break;
-            }
-
-        if (!flag)
-            cout << "Universidade não encontrada!!" << endl;
-
-    }
-    while (!flag);
-
-    flag = 0;
-    do
-    {
-        cout << "Em qual departamento este aluno está associado? ";
-        cin >> departamento;
-        LinkedList<Departamento *> listaDptos = novoAluno->getUnivAssociado()->getDptos();
-
-        for (int i = 0, l = listaDptos.getLength(); i < l; i++)
-        {
-            if (listaDptos[i]->getNome() == departamento)
-            {
-                flag = 1;
-                novoAluno->setDptoAssociado(listaDptos[i]);
-                break;
-            }
-
-            if (!flag)
-                cout << "Departamento não encontrado!!" << endl;
-        }
-    }
-    while (!flag);
-
-    flag = 0;
+//    do
+//    {
+//        cout << "Em qual universidade esse aluno está matriculado? ";
+//        cin >> universidade;
+//
+//        for (int i = 0, l = ListaUniversidades.getLength(); i < l; ++i)
+//            if (ListaUniversidades[i]->getNome() == universidade)
+//            {
+//                flag = 1;
+//                novoAluno->setUnivAssociado(ListaUniversidades[i]);
+//                break;
+//            }
+//
+//        if (!flag)
+//            cout << "Universidade não encontrada!!" << endl;
+//
+//    }
+//    while (!flag);
+//
+//    flag = 0;
+//    do
+//    {
+//        cout << "Em qual departamento este aluno está associado? ";
+//        cin >> departamento;
+//        LinkedList<Departamento *> listaDptos = novoAluno->getUnivAssociado()->getDptos();
+//
+//        for (int i = 0, l = listaDptos.getLength(); i < l; i++)
+//        {
+//            if (listaDptos[i]->getNome() == departamento)
+//            {
+//                flag = 1;
+//                novoAluno->setDptoAssociado(listaDptos[i]);
+//                break;
+//            }
+//
+//            if (!flag)
+//                cout << "Departamento não encontrado!!" << endl;
+//        }
+//    }
+//    while (!flag);
+//
+//    cout << "Em quantas disciplinas este aluno está matriculado? " << endl;
+//    cin >> qtdDisciplinas;
+//
+//    for (int j = 0; j < qtdDisciplinas; j++)
+//    {
+//        flag = 0;
+//        do
+//        {
+//            cout << "Digite o nome da " << (j+1) << "a disciplina que o aluno está matriculado: ";
+//            cin >> disciplina;
+//
+//
+//        }
+//        while (!flag);
+//    }
 }
 
 void Principal::cadastraProfessor()
 {
+    std::string nome;
+    int dia, mes, ano;
+    Professor *novoProfessor;
 
+    cout << "Digite o nome do Professor: " << endl;
+    cin >> nome;
+
+    cout << "Digite dia, mês e ano de nascimento do Professor, separados por espaços: ";
+    cin >> dia >> mes >> ano;
+
+    novoProfessor = new Professor(dia, mes, ano,  nome);
+    ListaProfessores.append(novoProfessor);
 }
 
 void Principal::cadastraDisciplina()
