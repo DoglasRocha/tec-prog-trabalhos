@@ -58,11 +58,7 @@ Disciplina *Disciplina::setDptoAssociado(Departamento *departamento)
 
 void Disciplina::imprimeAlunos()
 {
-    for (int i = 0, l = listaAlunos.getLength(); i < l; i++)
-    {
-        std::cout << "O aluno " << listaAlunos[i]->getAluno()->getNome() << " está matriculado na disciplina " << nome << "\n";
-    }
-
+    listaAlunos.imprimeAlunos();
 }
 
 Disciplina *Disciplina::addAluno(Aluno *novoAluno)

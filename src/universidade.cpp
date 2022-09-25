@@ -1,14 +1,19 @@
 #include "../includes/universidade.hpp"
 #include "../includes/departamento.hpp"
+#include "../includes/lista_departamentos.hpp"
 #include <iostream>
 #include <list>
 
 Universidade::Universidade(std::string nome_)
 {
     nome = nome_;
+    dptos = new ListaDepartamentos();
 }
 
-Universidade::~Universidade() {}
+Universidade::~Universidade()
+{
+    delete dptos;
+}
 
 Universidade *Universidade::setNome(std::string nome_)
 {
@@ -24,7 +29,7 @@ std::string Universidade::getNome()
 
 Universidade *Universidade::setDepartamento(Departamento *departamento)
 {
-    dptos.append(departamento);
+    dptos->append(departamento);
     departamento->setUniversidade(this);
 
     return this;
@@ -32,11 +37,9 @@ Universidade *Universidade::setDepartamento(Departamento *departamento)
 
 void Universidade::imprimeDepartamentos()
 {
-    for (int i = 0, l = dptos.getLength(); i < l; i++)
-        std::cout << "O " << dptos[i]->getNome() << " pertence a "
-                  << nome << std::endl;
+    dptos->imprimeDptosEUniv();
 }
 
-LinkedList<Departamento *> Universidade::getDptos() {
+ListaDepartamentos *Universidade::getDptos() {
     return dptos;
 }

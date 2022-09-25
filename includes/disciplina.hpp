@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "../linked-list/includes/linked-list.hpp"
+#include "lista_ficha_aluno.hpp"
 #include "../includes/ficha_aluno.hpp"
 
 class Departamento;
@@ -15,7 +15,7 @@ class Disciplina
         int numeroMaxAlunos;
 
     public:
-        LinkedList<FichaAluno *> listaAlunos;
+        ListaFichaAluno listaAlunos;
         Disciplina *next, *prev;
 
         Disciplina(std::string nome_="", std::string areaConhecimento_="");
